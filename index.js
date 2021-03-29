@@ -10,58 +10,43 @@ const questions = [];
 function writeToFile(fileName, data) { }
 
 // TODO: Create a function to initialize app
-function init() { promtpProject() }
+// function init() { promtpProject() }
 
 // Function call to initialize app
-init();
+// init();
 
 // console.log("hello node!")
 // var commandLineArgs = process.argv;
 // console.log(process);
 
-const profileDataArgs = process.argv.slice(2);
-
-const [title, link] = profileDataArgs;
-
-const promptUser = () => {
-    return inquirer.prompt([
-      {
-          type: 'input',
-          name: 'username',
-          message: 'Enter your username?(Required)',
-          validate: nameInput => {
-              if (nameInput) {
-                  return true;
-              } else {
-                  console.log('Please enter your username!');
-                  return false;
-              }
-          }
-      },
-{
-    type: 'input',
-    name: 'email',
-    message: 'Enter your email?(Required)',
-    validate: nameInput => {
-        if (nameInput) {
-            return true;
-        } else {
-            console.log('Please enter your email!');
-            return false;
-        }
-    }
-},
-]).then((res) => {
-    console.log(res)
-    fs.writeFile('./readme.md', generatePage(res.title, res.link), err => {
-        if (err) throw new Error(err);
-    })
-
-})
-
-}
 function promtpProject() {
     return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'username',
+            message: 'Enter your username?(Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your username!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email?(Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your email!');
+                    return false;
+                }
+            }
+        },
         {
             type: 'input',
             name: 'title',
@@ -107,12 +92,12 @@ function promtpProject() {
             message: 'Enter installaition instructions?(Required)',
             validate: nameInput => {
                 if (nameInput) {
-                  return true;
+                    return true;
                 } else {
-                  console.log('Please enter installation instructions!');
-                  return false;
+                    console.log('Please enter installation instructions!');
+                    return false;
                 }
-              }
+            }
         },
         {
             type: 'input',
@@ -120,12 +105,12 @@ function promtpProject() {
             message: 'Enter usage information?(Required)',
             validate: nameInput => {
                 if (nameInput) {
-                  return true;
+                    return true;
                 } else {
-                  console.log('Please enter usage information!');
-                  return false;
+                    console.log('Please enter usage information!');
+                    return false;
                 }
-              }
+            }
         },
         {
             type: 'input',
@@ -133,12 +118,12 @@ function promtpProject() {
             message: 'Enter contribution instructions?(Required)',
             validate: nameInput => {
                 if (nameInput) {
-                  return true;
+                    return true;
                 } else {
-                  console.log('Please enter contribution instructions for your project!');
-                  return false;
+                    console.log('Please enter contribution instructions for your project!');
+                    return false;
                 }
-              }
+            }
         },
         {
             type: 'input',
@@ -146,16 +131,22 @@ function promtpProject() {
             message: 'What tests was done for your project?(Required)',
             validate: nameInput => {
                 if (nameInput) {
-                  return true;
+                    return true;
                 } else {
-                  console.log('Please enter tests that was done for your project! If none, enter none');
-                  return false;
+                    console.log('Please enter tests that was done for your project! If none, enter none');
+                    return false;
                 }
-              }
+            }
         },
+        {
+            type: 'list',
+            name: 'license',
+            message: 'What license did you use for you project?',
+            choices: ['Apache', 'Boost', 'Eclipse', 'GNU', 'IBM', 'MIT', 'Mozilla'],
+                }
     ]).then((res) => {
         console.log(res)
-        fs.writeFile('./readme.md', generatePage(res.title, res.link, res.desctibtion, res.installation, res.tests), err => {
+        fs.writeFile('./readme.md', generatePage(res.username, res.email, res.title, res.link, res.desctibtion, res.installation, res.usage, res.contrubute, res.tests, res.license), err => {
             if (err) throw new Error(err);
         })
 
@@ -163,18 +154,57 @@ function promtpProject() {
 
 }
 
-const generatePage = (title, link, describtion, installation, tests) => {
+const generatePage = (username, email, title, link, describtion, installation, usage, contribute, tests, license) => {
     return `
-    ##${title}
-    ##${link}
-    ##Describtion
+    # ${title}
+
+    ## Describtion
+
     ${describtion}
-    ##Installatioln
+
+    ## Table of Contents
+
+    * [Installation](#installation) 
+    * [Usage](#usage)
+    * [Contributions](#contributions)
+    * [Testing](#testing)
+    * [Deployed Link](#link)
+    * [Qurestions](#questions)
+    * [License](#license)
+
+    ## Installatioln
+
     ${installation}
-    ##Tests
+
+    ## Usage
+
+    ${usage}
+
+    ## Contibutions
+
+    ${contribute}
+
+
+    ## Testing
     ${tests}
+
+    ## Deployed link
+
+    ${link}
+
+    ## Questions
+
+    Github link: https://github.com/${username}
+    Email: ${email}
+
+    ## License
+
+    License that was used for this project: ${license}
+
     `
 };
+
+promtpProject()
 
 
 
