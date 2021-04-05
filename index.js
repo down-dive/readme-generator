@@ -2,6 +2,7 @@
 const fs = require('fs')
 const inquirer = require('inquirer');
 const generatePage = require('./utils/generateMarkdown');
+const generateLicense = require('./src/tryingitout/trying.js')
 // const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
@@ -76,7 +77,7 @@ function promtpProject() {
         },
         {
             type: 'input',
-            name: 'desctibtion',
+            name: 'desctiption',
             message: 'Enter describtion of your project(Required)',
             validate: nameInput => {
                 if (nameInput) {
@@ -148,13 +149,14 @@ function promtpProject() {
     ])
 }
 
-const makeitWork = (res) =>  {
-    console.log(res)
-    fs.writeFile('./readme.md', generatePage, promtpProject(res.username, res.email, res.title, res.link, res.desctibtion, res.installation, res.usage, res.contrubute, res.tests, res.
-    license), err => {
-        if (err) throw new Error(err);
-    })
+const makeitWork = () =>  {
+    promtpProject().then((res) => {
+        fs.writeFile('./readme.md', generatePage(res.username, res.email, res.title, res.link, res.desctiption, res.installation, res.usage, res.contrubute, res.tests, generateLicense(res.
+            license)), err => {
+                if (err) throw new Error(err);
+            })
 
+    })
 }
 
 
