@@ -3,23 +3,7 @@ const fs = require('fs')
 const inquirer = require('inquirer');
 const generatePage = require('./utils/generateMarkdown');
 const generateLicense = require('./src/tryingitout/trying.js')
-// const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
-const questions = [];
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
-
-// TODO: Create a function to initialize app
-// function init() { promtpProject() }
-
-// Function call to initialize app
-// init();
-
-// console.log("hello node!")
-// var commandLineArgs = process.argv;
-// console.log(process);
 
 function promtpProject() {
     return inquirer.prompt([
@@ -161,10 +145,4 @@ const makeitWork = () =>  {
 
 
 
-makeitWork();
-
-
-
-// console.log('It worked!')
-
-// Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
+makeitWork()
