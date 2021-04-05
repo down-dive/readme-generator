@@ -1,6 +1,7 @@
 # Readme Generator
 
 ## Description
+Node application that helps creating a readme using a command line only!
 
 ## Table of Contents
 
@@ -18,7 +19,7 @@ To install this application:
 * run the application in node
 
 ## Usage
-
+Just a lazy way to create readme and practice usong node applicaion
 
 ## Contributions
 If you want to contribute please contact Yev
