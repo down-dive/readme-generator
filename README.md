@@ -12,7 +12,6 @@ The main purpose of this project is to provide a tool for generating professiona
 * [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
-* [Screenshots](#screenshots)
 * [Questions](#questions)
 
 ## Installation
@@ -29,9 +28,6 @@ Please see the following link for license information:
 Please clone the repo and do the changes locally on your machine. When you are done with the changes, create a pull request on the github repo.
 ## Tests
 Run the following command "node index" multiple time in your terminal. Each time include or exclude some sections and checkout the results.
-## Screenshots
-Here are the snapshots of different sections of a professional readme file:
-![alt=professional-readme](./assets/images/readme.png)
 ## Link to Demo Video
 Please click on the following link to see the Demo video for this project:
 [Link to Demo](https://drive.google.com/file/d/15IfR7GJpsrBWExQ76Tmzg68ykFF9-eUl/view?usp=sharing)
